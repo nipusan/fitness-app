@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext.jsx';
 import { getAllRoutines } from './services/routines.js';
 import { Play, Pause, RotateCcw, CheckCircle, Calendar, TrendingUp, Award } from 'lucide-react';
+import Navbar from './components/Navbar.jsx';
+import RoutinesPage from './pages/RoutinesPage.jsx';
 
 // Componente principal de la aplicación de fitness.
 // Controla las fases del entrenamiento: inicio -> calentamiento -> circuito (3 rondas) -> enfriamiento -> completado.
@@ -15,7 +18,7 @@ const FitnessApp = () => {
   const [isResting, setIsResting] = useState(false);
   const [completedWorkouts, setCompletedWorkouts] = useState([]);
   const [showQR, setShowQR] = useState(false);
-  const { user, isGuest } = useAuth();
+  const { user } = useAuth();
 
   // Rutinas parametrizadas (por usuario + defaults)
   const [routines, setRoutines] = useState([]);
@@ -170,40 +173,36 @@ const FitnessApp = () => {
     return completedWorkouts.filter(date => new Date(date) > weekAgo).length;
   };
 
-  // Vista QR.
-  if (showQR) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-8 flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Escanea para acceder</h2>
-          <div className="bg-white p-4 rounded-xl inline-block mb-4">
-            <img
-              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://claude.ai/share/rutina-quema-grasa"
-              alt="QR Code"
-              className="w-64 h-64"
-            />
-          </div>
-          <p className="text-gray-600 mb-6">Guarda este QR para acceder rápidamente a tu rutina</p>
-          <button
-            onClick={() => setShowQR(false)}
-            className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600"
-          >
-            Volver a la app
-          </button>
+  // Vista QR como overlay reutilizable
+  const QRView = () => (
+    <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-br from-orange-50 to-red-50 p-8 flex items-center justify-center">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Escanea para acceder</h2>
+        <div className="bg-white p-4 rounded-xl inline-block mb-4">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://claude.ai/share/rutina-quema-grasa"
+            alt="QR Code"
+            className="w-64 h-64"
+          />
         </div>
+        <p className="text-gray-600 mb-6">Guarda este QR para acceder rápidamente a tu rutina</p>
+        <button
+          onClick={() => setShowQR(false)}
+          className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600"
+        >
+          Volver a la app
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 
-  // Pantalla inicial.
-  if (currentPhase === 'inicio') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-4">
-        <div className="max-w-2xl mx-auto">
+  // Pantalla inicial como componente
+  const HomeView = () => (
+    <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-br from-orange-50 to-red-50 p-4">
+      <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <div className="text-center mb-6">
               <h1 className="text-3xl font-bold text-gray-800 mb-2">🔥 Quema Grasa Abdominal</h1>
-              <p className="text-sm text-gray-500">Usuario: {user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
               <p className="text-gray-600">Rutina de pie - Sin equipo necesario</p>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
@@ -243,27 +242,27 @@ const FitnessApp = () => {
               </div>
             </div>
             <div className="grid gap-4 mb-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-gray-600">Selecciona rutina</label>
-                <select
-                  value={selectedRoutineId || ''}
-                  onChange={e => setSelectedRoutineId(e.target.value)}
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-                >
-                  {routines.map(r => (
-                    <option key={r.id} value={r.id}>{r.name}{r.isDefault ? ' (default)' : ''}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-gray-600">Resumen</label>
-                <div className="text-xs bg-orange-50 rounded-lg p-3 border border-orange-200">
-                  {selectedRoutine ? (
-                    <p className="text-gray-700">Rounds: {rounds} · Trabajo: {workSeconds}s · Descanso: {restSeconds}s</p>
-                  ) : <p className="text-gray-400">Sin rutina seleccionada</p>}
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-gray-600">Selecciona rutina</label>
+                  <select
+                    value={selectedRoutineId || ''}
+                    onChange={e => setSelectedRoutineId(e.target.value)}
+                    className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >
+                    {routines.map(r => (
+                      <option key={r.id} value={r.id}>{r.name}{r.isDefault ? ' (default)' : ''}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-gray-600">Resumen</label>
+                  <div className="text-xs bg-orange-50 rounded-lg p-3 border border-orange-200">
+                    {selectedRoutine ? (
+                      <p className="text-gray-700">Rounds: {rounds} · Trabajo: {workSeconds}s · Descanso: {restSeconds}s</p>
+                    ) : <p className="text-gray-400">Sin rutina seleccionada</p>}
+                  </div>
                 </div>
               </div>
-            </div>
             <button
               onClick={startWorkout}
               disabled={!selectedRoutine}
@@ -278,21 +277,18 @@ const FitnessApp = () => {
               Generar QR de acceso rápido
             </button>
           </div>
-        </div>
       </div>
-    );
-  }
+    </div>
+  );
 
-  // Pantalla final.
-  if (currentPhase === 'completado') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 p-4 flex items-center justify-center">
+  // Pantalla final como componente
+  const CompletedView = () => (
+    <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-br from-green-50 to-emerald-50 p-4 flex items-center justify-center">
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
           <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-4">¡Rutina Completada! 🎉</h2>
-          <p className="text-xs text-gray-500 mb-4">Usuario: {user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
           <p className="text-gray-600 mb-2">Has quemado calorías y fortalecido tu core</p>
           <p className="text-sm text-gray-500 mb-8">Recuerda: La constancia es la clave del éxito</p>
           <div className="bg-green-50 rounded-xl p-4 mb-6">
@@ -306,13 +302,12 @@ const FitnessApp = () => {
             Volver al inicio
           </button>
         </div>
-      </div>
-    );
-  }
+    </div>
+  );
 
-  // Vista principal durante ejercicio.
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-4">
+  // Vista principal durante ejercicio como componente
+  const WorkoutView = () => (
+    <div className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-br from-orange-50 to-red-50 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
@@ -321,7 +316,6 @@ const FitnessApp = () => {
                 {currentPhase === 'calentamiento' ? '🔥 Calentamiento' : currentPhase === 'circuito' ? `💪 Circuito - Ronda ${currentRound}/${rounds}` : '🧘 Enfriamiento'}
               </p>
               <h2 className="text-2xl font-bold text-gray-800">{getCurrentExerciseName()}</h2>
-              <p className="text-xs text-gray-500">{user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
               {getCurrentExerciseDesc() && <p className="text-sm text-gray-600 mt-1">{getCurrentExerciseDesc()}</p>}
             </div>
           </div>
@@ -386,6 +380,21 @@ const FitnessApp = () => {
         )}
       </div>
     </div>
+  );
+
+  // Router con navbar y rutas
+  return (
+    <BrowserRouter>
+      <Navbar />
+      {showQR ? (
+        <QRView />
+      ) : (
+        <Routes>
+          <Route path="/" element={currentPhase === 'inicio' ? <HomeView /> : currentPhase === 'completado' ? <CompletedView /> : <WorkoutView />} />
+          <Route path="/rutinas" element={<RoutinesPage />} />
+        </Routes>
+      )}
+    </BrowserRouter>
   );
 };
 
