@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "copilot.enable": {
     "*": true
@@ -10,24 +10,12 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "**/dist": true,
-    "**/build": true,
-    "**/__pycache__": true,
-    "**/*.pyc": true,
-    "**/venv": true,
-    "**/env": true,
-    "**/.venv": true,
-    "**/.pytest_cache": true,
-    "**/.coverage": true,
-    "**/coverage": true
+    "**/build": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
-    "**/build": true,
-    "**/venv": true,
-    "**/env": true,
-    "**/.venv": true,
-    "**/coverage": true
+    "**/build": true
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n"

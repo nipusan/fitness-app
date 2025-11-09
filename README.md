@@ -1,5 +1,50 @@
 # project-template-copilot
 
+---
+
+## 🚴 Aplicación Fitness (React + Vite + Tailwind)
+
+Esta plantilla ahora incluye una app base de fitness construida con React 18, Vite y Tailwind CSS. El componente principal está en `src/App.jsx` y puedes ejecutarla localmente con los pasos siguientes.
+
+### Requisitos
+
+- Node.js 18+ (recomendado 20+)
+
+### Ejecutar en local
+
+```pwsh
+# Instalar dependencias
+npm install
+
+# Iniciar modo desarrollo (hot reload)
+npm run dev
+
+# Compilar para producción
+npm run build
+
+# Previsualizar el build localmente
+npm run preview
+```
+
+Si es la primera vez que clonas el repo, abre el proyecto en VS Code y asegúrate de tener instaladas las extensiones recomendadas (Tailwind CSS IntelliSense, EditorConfig, Prettier, GitHub Copilot).
+
+### Estructura relevante
+
+```text
+.
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+└── src/
+   ├── App.jsx          # Componente principal (rutina fitness)
+   ├── main.jsx         # Punto de entrada React
+   └── index.css        # Estilos globales con Tailwind
+```
+
+---
+
 ![GitHub](https://img.shields.io/github/license/nipusan/project-template-copilot)
 ![GitHub issues](https://img.shields.io/github/issues/nipusan/project-template-copilot)
 
