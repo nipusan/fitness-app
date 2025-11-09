@@ -4,6 +4,19 @@
       "id": "default-belly-burn",
       "name": "Quema Grasa Abdominal",
       "description": "Rutina de pie - Sin equipo necesario",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Mantén el abdomen contraído siempre",
+        "Movimientos controlados, no por inercia",
+        "Combina con déficit calórico ligero",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -68,6 +81,19 @@
       "id": "legs-toner",
       "name": "Piernas y Glúteos Tonificados",
       "description": "Enfocada en piernas y glúteos — Sin equipo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Activa glúteos en cada repetición",
+        "Controla la rodilla que no pase la punta del pie",
+        "Respira de forma constante",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -132,6 +158,19 @@
       "id": "upper-body-toner",
       "name": "Tono de Tren Superior",
       "description": "Rutina para brazos, hombros y pecho",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Mantén hombros abajo y atrás",
+        "Evita bloquear codos",
+        "Respira al esfuerzo",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -196,6 +235,19 @@
       "id": "full-body-burn",
       "name": "Quema Total del Cuerpo",
       "description": "Circuito completo para activar todo el cuerpo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Prioriza la técnica sobre la velocidad",
+        "Mantén el core activo",
+        "Hidrátate entre series",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -260,6 +312,19 @@
       "id": "arms-lean",
       "name": "Brazos Definidos",
       "description": "Tonificación de brazos sin equipo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 18,
+          "max": 22
+        }
+      },
+      "advice": [
+        "Controla el rango sin dolor",
+        "Centrate en la contracción del músculo",
+        "Respiración rítmica",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 15
@@ -324,6 +389,19 @@
       "id": "back-posture-fix",
       "name": "Espalda Fuerte y Postura",
       "description": "Mejora postura y fortalece la espalda",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Imagina juntar escápulas atrás",
+        "Mantén cuello largo, sin tensión",
+        "Evita hiperextender zona lumbar",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -388,6 +466,19 @@
       "id": "butt-lift",
       "name": "Glúteo Elevado",
       "description": "Enfoque total en glúteo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Apretar glúteos al final del movimiento",
+        "Control en la rodilla y cadera",
+        "Mantén respiración constante",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -452,6 +543,19 @@
       "id": "obliques-shaper",
       "name": "Oblicuos Marcados",
       "description": "Enfoque lateral del abdomen de pie",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Evita mover la cadera en giros",
+        "Siente el trabajo en los costados",
+        "Controla la respiración",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20
@@ -516,6 +620,19 @@
       "id": "cardio-fatburn",
       "name": "Cardio para Quemar Grasa",
       "description": "Rutina cardiovascular intensa sin saltos",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 18,
+          "max": 22
+        }
+      },
+      "advice": [
+        "Mantén cadencia constante",
+        "Control postural, hombros relajados",
+        "Hidrátate si lo necesitas",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 15
@@ -580,6 +697,19 @@
       "id": "flex-mobility",
       "name": "Movilidad y Fluidez Corporal",
       "description": "Rutina suave para mejorar movilidad",
+      "meta": {
+        "weeklyTarget": 3,
+        "estimatedMinutes": {
+          "min": 12,
+          "max": 18
+        }
+      },
+      "advice": [
+        "Movimientos suaves y controlados",
+        "No fuerces rangos dolorosos",
+        "Respira profundo y lento",
+        "Realiza 3 veces por semana"
+      ],
       "config": {
         "rounds": 2,
         "restSeconds": 10
@@ -644,6 +774,19 @@
       "id": "core-standing",
       "name": "Core de Pie Intenso",
       "description": "Abdomen completo sin acostarse",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Aprieta abdomen al subir rodillas",
+        "Evita arquear espalda baja",
+        "Controla la respiración",
+        "Realiza 4 veces por semana"
+      ],
       "config": {
         "rounds": 3,
         "restSeconds": 20

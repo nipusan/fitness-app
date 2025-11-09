@@ -202,18 +202,19 @@ const FitnessApp = () => {
       <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <div className="text-center mb-6">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">🔥 Quema Grasa Abdominal</h1>
-              <p className="text-gray-600">Rutina de pie - Sin equipo necesario</p>
+              {/* Título y descripción parametrizados según la rutina seleccionada */}
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">{selectedRoutine?.name || 'Rutina'}</h1>
+              <p className="text-gray-600">{selectedRoutine?.description || 'Entrenamiento guiado'}</p>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
               <div className="bg-orange-50 rounded-xl p-4 text-center">
                 <Calendar className="w-6 h-6 text-orange-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-800">{getWeeklyProgress()}/4</p>
+                <p className="text-2xl font-bold text-gray-800">{getWeeklyProgress()}/{selectedRoutine?.meta?.weeklyTarget ?? 4}</p>
                 <p className="text-sm text-gray-600">Esta semana</p>
               </div>
               <div className="bg-orange-50 rounded-xl p-4 text-center">
                 <TrendingUp className="w-6 h-6 text-orange-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-800">20-25</p>
+                <p className="text-2xl font-bold text-gray-800">{selectedRoutine?.meta?.estimatedMinutes ? `${selectedRoutine.meta.estimatedMinutes.min}-${selectedRoutine.meta.estimatedMinutes.max}` : '20-25'}</p>
                 <p className="text-sm text-gray-600">Minutos</p>
               </div>
               <div className="bg-orange-50 rounded-xl p-4 text-center">
@@ -234,10 +235,14 @@ const FitnessApp = () => {
               <div className="border-l-4 border-red-500 pl-4">
                 <h3 className="font-semibold text-gray-800 mb-2">💡 Consejos clave</h3>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Mantén el abdomen contraído siempre</li>
-                  <li>• Movimientos controlados, no por inercia</li>
-                  <li>• Combina con déficit calórico ligero</li>
-                  <li>• Realiza 4 veces por semana</li>
+                  {(selectedRoutine?.advice ?? [
+                    'Mantén el abdomen contraído siempre',
+                    'Movimientos controlados, no por inercia',
+                    'Combina con déficit calórico ligero',
+                    'Realiza 4 veces por semana',
+                  ]).map((tip, idx) => (
+                    <li key={idx}>• {tip}</li>
+                  ))}
                 </ul>
               </div>
             </div>
