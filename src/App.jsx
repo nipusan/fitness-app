@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from './auth/AuthContext.jsx';
+import { getAllRoutines } from './services/routines.js';
 import { Play, Pause, RotateCcw, CheckCircle, Calendar, TrendingUp, Award } from 'lucide-react';
 
 // Componente principal de la aplicación de fitness.
@@ -16,26 +17,32 @@ const FitnessApp = () => {
   const [showQR, setShowQR] = useState(false);
   const { user, isGuest } = useAuth();
 
-  // Definición de bloques de ejercicios.
-  const warmup = [
-    { name: 'Marcha rápida en el sitio', duration: 60 },
-    { name: 'Elevación de rodillas suave', duration: 60 },
-    { name: 'Rotaciones de torso', duration: 60 }
-  ];
+  // Rutinas parametrizadas (por usuario + defaults)
+  const [routines, setRoutines] = useState([]);
+  const [selectedRoutineId, setSelectedRoutineId] = useState(null);
+  const selectedRoutine = routines.find(r => r.id === selectedRoutineId);
+  const rounds = selectedRoutine?.config?.rounds ?? 3;
+  const restSeconds = selectedRoutine?.config?.restSeconds ?? 20;
+  const warmup = selectedRoutine?.warmup ?? [];
+  const mainCircuit = selectedRoutine?.mainCircuit ?? [];
+  const cooldown = selectedRoutine?.cooldown ?? [];
+  const workSeconds = mainCircuit[0]?.duration ?? 40;
 
-  const mainCircuit = [
-    { name: 'Rodillas altas (High Knees)', duration: 40, desc: 'Eleva rodillas al pecho con abdomen firme' },
-    { name: 'Toques al pie cruzados', duration: 40, desc: 'Mano derecha toca punta de pie izquierdo, alternando' },
-    { name: 'Giros de torso explosivos', duration: 40, desc: 'Gira el torso manteniendo cadera fija' },
-    { name: 'Elevación de rodilla + giro', duration: 40, desc: 'Eleva rodilla y gira el torso hacia ella' },
-    { name: 'Mini squat + elevación de rodilla', duration: 40, desc: 'Sentadilla ligera, al subir elevas rodilla' }
-  ];
+  // Carga de rutinas por usuario
+  useEffect(() => {
+    const all = getAllRoutines(user?.id || 'guest');
+    setRoutines(all);
+    const saved = localStorage.getItem('routines:selected');
+    const initial = saved && all.some(r => r.id === saved) ? saved : all[0]?.id;
+    setSelectedRoutineId(initial || null);
+  }, [user?.id]);
 
-  const cooldown = [
-    { name: 'Inclinaciones laterales controladas', duration: 60 },
-    { name: 'Giros lentos de torso', duration: 60 },
-    { name: 'Respiración abdominal profunda', duration: 60 }
-  ];
+  // Persistir rutina seleccionada
+  useEffect(() => {
+    if (selectedRoutineId) {
+      localStorage.setItem('routines:selected', selectedRoutineId);
+    }
+  }, [selectedRoutineId]);
 
   // Efecto para manejar el temporizador.
   useEffect(() => {
@@ -66,7 +73,7 @@ const FitnessApp = () => {
         setIsResting(false);
         if (currentExercise < mainCircuit.length - 1) {
           setCurrentExercise(prev => prev + 1);
-        } else if (currentRound < 3) {
+        } else if (currentRound < rounds) {
           setCurrentRound(prev => prev + 1);
           setCurrentExercise(0);
         } else {
@@ -75,7 +82,7 @@ const FitnessApp = () => {
         }
       } else {
         setIsResting(true);
-        setTimeLeft(20); // Duración del descanso.
+        setTimeLeft(restSeconds); // Descanso parametrizado
         setIsActive(true);
       }
     } else if (currentPhase === 'enfriamiento') {
@@ -101,7 +108,7 @@ const FitnessApp = () => {
     if (currentPhase === 'calentamiento') {
       duration = warmup[currentExercise].duration;
     } else if (currentPhase === 'circuito') {
-      duration = isResting ? 20 : mainCircuit[currentExercise].duration;
+      duration = isResting ? restSeconds : mainCircuit[currentExercise].duration;
     } else if (currentPhase === 'enfriamiento') {
       duration = cooldown[currentExercise].duration;
     }
@@ -143,14 +150,14 @@ const FitnessApp = () => {
 
   // Calcula porcentaje de avance total.
   const getProgress = () => {
-    const totalExercises = warmup.length + (mainCircuit.length * 3) + cooldown.length;
+  const totalExercises = warmup.length + (mainCircuit.length * rounds) + cooldown.length;
     let completed = 0;
     if (currentPhase === 'calentamiento') {
       completed = currentExercise;
     } else if (currentPhase === 'circuito') {
       completed = warmup.length + ((currentRound - 1) * mainCircuit.length) + currentExercise;
     } else if (currentPhase === 'enfriamiento') {
-      completed = warmup.length + (mainCircuit.length * 3) + currentExercise;
+      completed = warmup.length + (mainCircuit.length * rounds) + currentExercise;
     } else if (currentPhase === 'completado') {
       completed = totalExercises;
     }
@@ -220,9 +227,9 @@ const FitnessApp = () => {
               <div className="border-l-4 border-orange-500 pl-4">
                 <h3 className="font-semibold text-gray-800 mb-2">📋 Estructura</h3>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Calentamiento: 3 minutos</li>
-                  <li>• Circuito principal: 3 rondas (40s trabajo + 20s descanso)</li>
-                  <li>• Enfriamiento: 3 minutos</li>
+                  <li>• Calentamiento: {Math.round(warmup.reduce((a, b) => a + (b.duration || 0), 0) / 60)} minutos</li>
+                  <li>• Circuito principal: {rounds} rondas ({workSeconds}s trabajo + {restSeconds}s descanso)</li>
+                  <li>• Enfriamiento: {Math.round(cooldown.reduce((a, b) => a + (b.duration || 0), 0) / 60)} minutos</li>
                 </ul>
               </div>
               <div className="border-l-4 border-red-500 pl-4">
@@ -235,11 +242,34 @@ const FitnessApp = () => {
                 </ul>
               </div>
             </div>
+            <div className="grid gap-4 mb-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-gray-600">Selecciona rutina</label>
+                <select
+                  value={selectedRoutineId || ''}
+                  onChange={e => setSelectedRoutineId(e.target.value)}
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  {routines.map(r => (
+                    <option key={r.id} value={r.id}>{r.name}{r.isDefault ? ' (default)' : ''}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-gray-600">Resumen</label>
+                <div className="text-xs bg-orange-50 rounded-lg p-3 border border-orange-200">
+                  {selectedRoutine ? (
+                    <p className="text-gray-700">Rounds: {rounds} · Trabajo: {workSeconds}s · Descanso: {restSeconds}s</p>
+                  ) : <p className="text-gray-400">Sin rutina seleccionada</p>}
+                </div>
+              </div>
+            </div>
             <button
               onClick={startWorkout}
-              className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105 shadow-lg mb-4"
+              disabled={!selectedRoutine}
+              className="w-full disabled:opacity-50 bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105 shadow-lg mb-4"
             >
-              Comenzar Rutina
+              {selectedRoutine ? 'Comenzar Rutina' : 'Selecciona una rutina'}
             </button>
             <button
               onClick={() => setShowQR(true)}
@@ -288,7 +318,7 @@ const FitnessApp = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-sm text-gray-500 uppercase font-semibold">
-                {currentPhase === 'calentamiento' ? '🔥 Calentamiento' : currentPhase === 'circuito' ? `💪 Circuito - Ronda ${currentRound}/3` : '🧘 Enfriamiento'}
+                {currentPhase === 'calentamiento' ? '🔥 Calentamiento' : currentPhase === 'circuito' ? `💪 Circuito - Ronda ${currentRound}/${rounds}` : '🧘 Enfriamiento'}
               </p>
               <h2 className="text-2xl font-bold text-gray-800">{getCurrentExerciseName()}</h2>
               <p className="text-xs text-gray-500">{user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
