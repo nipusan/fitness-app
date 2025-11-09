@@ -1,0 +1,851 @@
+{
+  "routines": [
+    {
+      "id": "default-belly-burn",
+      "name": "Quema Grasa Abdominal",
+      "description": "Rutina de pie - Sin equipo necesario",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Mantén el abdomen contraído siempre",
+        "Movimientos controlados, no por inercia",
+        "Combina con déficit calórico ligero",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Marcha rápida en el sitio",
+          "duration": 60
+        },
+        {
+          "name": "Elevación de rodillas suave",
+          "duration": 60
+        },
+        {
+          "name": "Rotaciones de torso",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Rodillas altas (High Knees)",
+          "duration": 40,
+          "desc": "Eleva rodillas al pecho con abdomen firme"
+        },
+        {
+          "name": "Toques al pie cruzados",
+          "duration": 40,
+          "desc": "Mano derecha toca punta de pie izquierdo, alternando"
+        },
+        {
+          "name": "Giros de torso explosivos",
+          "duration": 40,
+          "desc": "Gira el torso manteniendo cadera fija"
+        },
+        {
+          "name": "Elevación de rodilla + giro",
+          "duration": 40,
+          "desc": "Eleva rodilla y gira el torso hacia ella"
+        },
+        {
+          "name": "Mini squat + elevación de rodilla",
+          "duration": 40,
+          "desc": "Sentadilla ligera, al subir elevas rodilla"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Inclinaciones laterales controladas",
+          "duration": 60
+        },
+        {
+          "name": "Giros lentos de torso",
+          "duration": 60
+        },
+        {
+          "name": "Respiración abdominal profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "legs-toner",
+      "name": "Piernas y Glúteos Tonificados",
+      "description": "Enfocada en piernas y glúteos — Sin equipo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Activa glúteos en cada repetición",
+        "Controla la rodilla que no pase la punta del pie",
+        "Respira de forma constante",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Marcha con pasos largos",
+          "duration": 60
+        },
+        {
+          "name": "Aperturas laterales de piernas",
+          "duration": 60
+        },
+        {
+          "name": "Rotaciones de cadera",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Sentadilla clásica",
+          "duration": 40,
+          "desc": "Baja controlado y sube firme"
+        },
+        {
+          "name": "Zancadas alternadas",
+          "duration": 40,
+          "desc": "Paso largo hacia adelante"
+        },
+        {
+          "name": "Sentadilla lateral",
+          "duration": 40,
+          "desc": "Desplaza el peso a cada lado"
+        },
+        {
+          "name": "Patada hacia atrás de pie",
+          "duration": 40,
+          "desc": "Extiende la pierna atrás activando glúteo"
+        },
+        {
+          "name": "Elevación de talones",
+          "duration": 40,
+          "desc": "Sube y baja activando gemelos"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento de cuádriceps de pie",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento de gemelos",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "upper-body-toner",
+      "name": "Tono de Tren Superior",
+      "description": "Rutina para brazos, hombros y pecho",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Mantén hombros abajo y atrás",
+        "Evita bloquear codos",
+        "Respira al esfuerzo",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Círculos de brazos",
+          "duration": 60
+        },
+        {
+          "name": "Aperturas de pecho",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad de hombro",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Flexiones de pared",
+          "duration": 40,
+          "desc": "Empuje controlado contra la pared"
+        },
+        {
+          "name": "Press de hombros sin peso",
+          "duration": 40,
+          "desc": "Empuja brazos hacia arriba con tensión"
+        },
+        {
+          "name": "Apertura lateral de brazos",
+          "duration": 40,
+          "desc": "Eleva brazos hacia los costados"
+        },
+        {
+          "name": "Cruzado de brazos al frente",
+          "duration": 40,
+          "desc": "Activa pecho cerrando brazos"
+        },
+        {
+          "name": "Golpes al aire controlados",
+          "duration": 40,
+          "desc": "Golpes frontales manteniendo tensión"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento de hombro",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento de tríceps",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "full-body-burn",
+      "name": "Quema Total del Cuerpo",
+      "description": "Circuito completo para activar todo el cuerpo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Prioriza la técnica sobre la velocidad",
+        "Mantén el core activo",
+        "Hidrátate entre series",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Marcha activa",
+          "duration": 60
+        },
+        {
+          "name": "Rotación articular",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad de torso",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Jumping jacks modificados",
+          "duration": 40,
+          "desc": "Apertura lateral sin salto"
+        },
+        {
+          "name": "Sentadilla + elevación lateral",
+          "duration": 40,
+          "desc": "Sube brazos a los lados"
+        },
+        {
+          "name": "Giro de torso dinámico",
+          "duration": 40,
+          "desc": "Gira activando abdomen"
+        },
+        {
+          "name": "Rodillas elevadas moderadas",
+          "duration": 40,
+          "desc": "Cadencia constante"
+        },
+        {
+          "name": "Toques laterales del pie",
+          "duration": 40,
+          "desc": "Extiende pierna alternada a los lados"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Inclinación lateral suave",
+          "duration": 60
+        },
+        {
+          "name": "Extensión de brazos",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "arms-lean",
+      "name": "Brazos Definidos",
+      "description": "Tonificación de brazos sin equipo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 18,
+          "max": 22
+        }
+      },
+      "advice": [
+        "Controla el rango sin dolor",
+        "Centrate en la contracción del músculo",
+        "Respiración rítmica",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 15
+      },
+      "warmup": [
+        {
+          "name": "Círculos amplios de brazos",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad de muñecas",
+          "duration": 60
+        },
+        {
+          "name": "Aperturas frontales",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Extensión de tríceps sin peso",
+          "duration": 40,
+          "desc": "Eleva brazos y flexiona detrás"
+        },
+        {
+          "name": "Curl de bíceps isométrico",
+          "duration": 40,
+          "desc": "Contrae bíceps sin peso"
+        },
+        {
+          "name": "Apertura invertida",
+          "duration": 40,
+          "desc": "Brazos atrás, abre y cierra"
+        },
+        {
+          "name": "Empuje hacia adelante",
+          "duration": 40,
+          "desc": "Extensión simulando empujar"
+        },
+        {
+          "name": "Golpes al aire controlados",
+          "duration": 40,
+          "desc": "Control total del movimiento"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento de bíceps",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento de tríceps",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "back-posture-fix",
+      "name": "Espalda Fuerte y Postura",
+      "description": "Mejora postura y fortalece la espalda",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Imagina juntar escápulas atrás",
+        "Mantén cuello largo, sin tensión",
+        "Evita hiperextender zona lumbar",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Movilidad cervical",
+          "duration": 60
+        },
+        {
+          "name": "Apertura de pecho suave",
+          "duration": 60
+        },
+        {
+          "name": "Rotaciones de hombro",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Remo simulado de pie",
+          "duration": 40,
+          "desc": "Tira codos hacia atrás"
+        },
+        {
+          "name": "Apertura de espalda",
+          "duration": 40,
+          "desc": "Abre brazos en cruz con tensión"
+        },
+        {
+          "name": "Superman de pie",
+          "duration": 40,
+          "desc": "Eleva brazos y aprieta espalda"
+        },
+        {
+          "name": "Contracción escapular",
+          "duration": 40,
+          "desc": "Junta escápulas conscientemente"
+        },
+        {
+          "name": "Inclinación frontal con brazos en T",
+          "duration": 40,
+          "desc": "Inclina levemente y abre brazos"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento de espalda alta",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento de pecho",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "butt-lift",
+      "name": "Glúteo Elevado",
+      "description": "Enfoque total en glúteo",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Apretar glúteos al final del movimiento",
+        "Control en la rodilla y cadera",
+        "Mantén respiración constante",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Marcha con elevación de talones",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad de caderas",
+          "duration": 60
+        },
+        {
+          "name": "Aperturas laterales de piernas",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Patada atrás de pie",
+          "duration": 40,
+          "desc": "Extiende pierna atrás firme"
+        },
+        {
+          "name": "Elevación lateral de pierna",
+          "duration": 40,
+          "desc": "Activa glúteo medio"
+        },
+        {
+          "name": "Paso atrás con extensión",
+          "duration": 40,
+          "desc": "Lleva pierna atrás y extiende"
+        },
+        {
+          "name": "Sentadilla isométrica corta",
+          "duration": 40,
+          "desc": "Mantén tensión baja"
+        },
+        {
+          "name": "Paso lateral amplio",
+          "duration": 40,
+          "desc": "Desplaza glúteos activados"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento de glúteos",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento de cadera",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "obliques-shaper",
+      "name": "Oblicuos Marcados",
+      "description": "Enfoque lateral del abdomen de pie",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Evita mover la cadera en giros",
+        "Siente el trabajo en los costados",
+        "Controla la respiración",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Rotación lateral de torso",
+          "duration": 60
+        },
+        {
+          "name": "Inclinaciones laterales suaves",
+          "duration": 60
+        },
+        {
+          "name": "Marcha con giro de torso",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Crunch lateral de pie",
+          "duration": 40,
+          "desc": "Codo hacia rodilla lateral"
+        },
+        {
+          "name": "Giro lateral controlado",
+          "duration": 40,
+          "desc": "Giro amplio sin mover cadera"
+        },
+        {
+          "name": "Elevación lateral de rodilla",
+          "duration": 40,
+          "desc": "Siente el apretón en el costado"
+        },
+        {
+          "name": "Toque lateral del tobillo",
+          "duration": 40,
+          "desc": "Lleva mano al tobillo lateral"
+        },
+        {
+          "name": "Corte diagonal (wood chop)",
+          "duration": 40,
+          "desc": "Simula movimiento diagonal descendente"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Inclinación lateral profunda",
+          "duration": 60
+        },
+        {
+          "name": "Giro suave de torso",
+          "duration": 60
+        },
+        {
+          "name": "Respiración profunda",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "cardio-fatburn",
+      "name": "Cardio para Quemar Grasa",
+      "description": "Rutina cardiovascular intensa sin saltos",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 18,
+          "max": 22
+        }
+      },
+      "advice": [
+        "Mantén cadencia constante",
+        "Control postural, hombros relajados",
+        "Hidrátate si lo necesitas",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 15
+      },
+      "warmup": [
+        {
+          "name": "Marcha acelerada",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad general",
+          "duration": 60
+        },
+        {
+          "name": "Elevación de rodillas suave",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Marcha rápida con brazos",
+          "duration": 40,
+          "desc": "Intensidad constante"
+        },
+        {
+          "name": "Paso lateral rápido",
+          "duration": 40,
+          "desc": "Pies activos todo el tiempo"
+        },
+        {
+          "name": "Rodillas medias al pecho",
+          "duration": 40,
+          "desc": "Ritmo sostenido"
+        },
+        {
+          "name": "Toques al pie alternados",
+          "duration": 40,
+          "desc": "Inclínate ligeramente"
+        },
+        {
+          "name": "Giro de torso rápido",
+          "duration": 40,
+          "desc": "Control sin perder ritmo"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Inhalación y exhalación profunda",
+          "duration": 60
+        },
+        {
+          "name": "Apertura suave de pecho",
+          "duration": 60
+        },
+        {
+          "name": "Estiramiento general",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "flex-mobility",
+      "name": "Movilidad y Fluidez Corporal",
+      "description": "Rutina suave para mejorar movilidad",
+      "meta": {
+        "weeklyTarget": 3,
+        "estimatedMinutes": {
+          "min": 12,
+          "max": 18
+        }
+      },
+      "advice": [
+        "Movimientos suaves y controlados",
+        "No fuerces rangos dolorosos",
+        "Respira profundo y lento",
+        "Realiza 3 veces por semana"
+      ],
+      "config": {
+        "rounds": 2,
+        "restSeconds": 10
+      },
+      "warmup": [
+        {
+          "name": "Respiración guiada",
+          "duration": 60
+        },
+        {
+          "name": "Movilidad de cuello",
+          "duration": 60
+        },
+        {
+          "name": "Rotación de brazos y torso",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Inclinación lateral suave",
+          "duration": 40,
+          "desc": "Control en cada lado"
+        },
+        {
+          "name": "Rotación torácica",
+          "duration": 40,
+          "desc": "Abre el torso"
+        },
+        {
+          "name": "Movilidad de cadera circular",
+          "duration": 40,
+          "desc": "Círculos amplios"
+        },
+        {
+          "name": "Estiramiento dinámico de piernas",
+          "duration": 40,
+          "desc": "Sube pierna suavemente"
+        },
+        {
+          "name": "Movilidad de hombro completa",
+          "duration": 40,
+          "desc": "Apertura y cierre"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Estiramiento profundo",
+          "duration": 60
+        },
+        {
+          "name": "Relajación de brazos",
+          "duration": 60
+        },
+        {
+          "name": "Respiración final",
+          "duration": 60
+        }
+      ]
+    },
+    {
+      "id": "core-standing",
+      "name": "Core de Pie Intenso",
+      "description": "Abdomen completo sin acostarse",
+      "meta": {
+        "weeklyTarget": 4,
+        "estimatedMinutes": {
+          "min": 20,
+          "max": 25
+        }
+      },
+      "advice": [
+        "Aprieta abdomen al subir rodillas",
+        "Evita arquear espalda baja",
+        "Controla la respiración",
+        "Realiza 4 veces por semana"
+      ],
+      "config": {
+        "rounds": 3,
+        "restSeconds": 20
+      },
+      "warmup": [
+        {
+          "name": "Torso twist suave",
+          "duration": 60
+        },
+        {
+          "name": "Marcha con rodilla alta ligera",
+          "duration": 60
+        },
+        {
+          "name": "Activación abdominal de pie",
+          "duration": 60
+        }
+      ],
+      "mainCircuit": [
+        {
+          "name": "Crunch frontal de pie",
+          "duration": 40,
+          "desc": "Codo a rodilla frontal"
+        },
+        {
+          "name": "Rodilla alta con pausa",
+          "duration": 40,
+          "desc": "Aprieta arriba un segundo"
+        },
+        {
+          "name": "Elevación doble de rodillas",
+          "duration": 40,
+          "desc": "Alterna sin perder postura"
+        },
+        {
+          "name": "Giro controlado del torso",
+          "duration": 40,
+          "desc": "Activa oblicuos"
+        },
+        {
+          "name": "Toque de talón enfrente",
+          "duration": 40,
+          "desc": "Inclina ligeramente el torso"
+        }
+      ],
+      "cooldown": [
+        {
+          "name": "Inclinación lateral",
+          "duration": 60
+        },
+        {
+          "name": "Torsión suave",
+          "duration": 60
+        },
+        {
+          "name": "Respiración abdominal",
+          "duration": 60
+        }
+      ]
+    }
+  ]
+}
