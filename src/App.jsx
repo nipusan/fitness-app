@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from './auth/AuthContext.jsx';
 import { Play, Pause, RotateCcw, CheckCircle, Calendar, TrendingUp, Award } from 'lucide-react';
 
 // Componente principal de la aplicación de fitness.
@@ -13,6 +14,7 @@ const FitnessApp = () => {
   const [isResting, setIsResting] = useState(false);
   const [completedWorkouts, setCompletedWorkouts] = useState([]);
   const [showQR, setShowQR] = useState(false);
+  const { user, isGuest } = useAuth();
 
   // Definición de bloques de ejercicios.
   const warmup = [
@@ -194,6 +196,7 @@ const FitnessApp = () => {
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <div className="text-center mb-6">
               <h1 className="text-3xl font-bold text-gray-800 mb-2">🔥 Quema Grasa Abdominal</h1>
+              <p className="text-sm text-gray-500">Usuario: {user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
               <p className="text-gray-600">Rutina de pie - Sin equipo necesario</p>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
@@ -259,6 +262,7 @@ const FitnessApp = () => {
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-4">¡Rutina Completada! 🎉</h2>
+          <p className="text-xs text-gray-500 mb-4">Usuario: {user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
           <p className="text-gray-600 mb-2">Has quemado calorías y fortalecido tu core</p>
           <p className="text-sm text-gray-500 mb-8">Recuerda: La constancia es la clave del éxito</p>
           <div className="bg-green-50 rounded-xl p-4 mb-6">
@@ -287,6 +291,7 @@ const FitnessApp = () => {
                 {currentPhase === 'calentamiento' ? '🔥 Calentamiento' : currentPhase === 'circuito' ? `💪 Circuito - Ronda ${currentRound}/3` : '🧘 Enfriamiento'}
               </p>
               <h2 className="text-2xl font-bold text-gray-800">{getCurrentExerciseName()}</h2>
+              <p className="text-xs text-gray-500">{user?.nombre}{isGuest ? ' (Invitado)' : ''}</p>
               {getCurrentExerciseDesc() && <p className="text-sm text-gray-600 mt-1">{getCurrentExerciseDesc()}</p>}
             </div>
           </div>
