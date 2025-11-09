@@ -20,6 +20,32 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.3.5",
+    "@semantic-release/npm": "^12.0.1",
+    "semantic-release": "^24.2.0"
+  },
+  "release": {
+    "branches": ["main"],
+    "plugins": [
+      ["@semantic-release/commit-analyzer", { "preset": "conventionalcommits" }],
+      ["@semantic-release/release-notes-generator", { "preset": "conventionalcommits" }],
+      ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
+      ["@semantic-release/github"],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   }
 }
